@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institut International des Sciences Sociales (ISS) - Madagascar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --iss-blue-deep: #123456;
+            --iss-ocean-blue-green: #1a6951;
+            --iss-gold: #ffcc33;
+            --iss-light-gray: #f9f9f9;
+            --text-color: #333;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--text-color);
+            background-color: white;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 400;
+        }
+
+        /* Hexagon Background Pattern */
+        .hexagon-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+            opacity: 0.05;
+        }
+
+        .hexagon-bg::before, .hexagon-bg::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M50 0L100 25L100 75L50 100L0 75L0 25Z" fill="%23123456" stroke="%231a6951" stroke-width="1"/></svg>');
+            background-size: 50px;
+            animation: moveHex 60s linear infinite;
+        }
+
+        .hexagon-bg::after {
+            animation-direction: reverse;
+        }
+
+        @keyframes moveHex {
+            from {
+                transform: translate(0, 0);
+            }
+            to {
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        section:nth-child(even) {
+            background-color: var(--iss-light-gray);
+        }
+
+        h2, h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--iss-blue-deep);
+            font-weight: 600;
+        }
+
+        /* ISS, c'est quoi ? */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .intro-item h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--iss-ocean-blue-green);
+        }
+
+        /* Filières Section */
+        .filiere-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .filiere-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .filiere-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .filiere-card .icon {
+            font-size: 3rem;
+            color: var(--iss-ocean-blue-green);
+            margin-bottom: 1rem;
+        }
+        
+        /* Compétences Section */
+        .competences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        .competence-item h4 {
+            color: var(--iss-ocean-blue-green);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .competence-item .progress-bar {
+            background-color: #ddd;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .competence-item .progress {
+            height: 100%;
+            background-color: var(--iss-gold);
+            width: 0;
+            transition: width 1s ease-out;
+        }
+
+        .competence-item.animate .progress {
+            width: var(--progress-width, 100%);
+        }
+
+        /* Vie Étudiante & Partenaires */
+        .flex-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .text-content, .media-content {
+            flex: 1 1 45%;
+            min-width: 300px;
+        }
+
+        .conferences-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .conferences-list li {
+            background-color: white;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 5px solid var(--iss-ocean-blue-green);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .conferences-list li:hover {
+            transform: translateX(10px);
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            justify-items: center;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        .partner-logo {
+            width: 100%;
+            max-width: 150px;
+            height: auto;
+            transition: transform 0.3s;
+        }
+        .partner-logo:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--iss-blue-deep);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .footer-content p, .footer-content a {
+            margin: 0.5rem 0;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-content a:hover {
+            color: var(--iss-gold);
+        }
+        .qr-code {
+            margin-top: 1rem;
+            width: 120px;
+            height: 120px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+         <video autoplay muted loop playsinline>
+      <source src="IISS PUB.mp4" type="video/mp4" />
+      Votre navigateur ne supporte pas la vidéo.
+    </video>
+     <audio  id="monson" controls autoplay loop>
+        <source src="ISS AUDIO.mp3" type="audio/mpeg">
+        <source src="MACKLEMORE _ RYAN LEWIS - CAN_T HOLD US FEAT. RAY DALTON (OFFICIAL MUSIC VIDEO)(MP3_320K).ogg" type="audio/ogg">
+    </audio>
+        </header>
+
+    <main>
+        <section class="hero">
+            <div class="hexagon-bg"></div>
+            <video class="hero-video" autoplay loop muted playsinline>
+                <source src="https://example.com/path/to/video.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Ici, construis ta vie</h1>
+                <p>Institut International des Sciences Sociales - Madagascar</p>
+            </div>
+        </section>
+
+        <section id="a-propos">
+            <div class="container">
+                <h2>L'ISS, c'est quoi ?</h2>
+                <div class="intro-grid">
+                    <div class="intro-item">
+                        <h3>Établissement en évolution</h3>
+                        <p>Fondé en 2019, l'Institut ISS s'est imposé comme une référence de l'enseignement supérieur à Madagascar, élargissant constamment son offre de formation.</p>
+                    </div>
+                    <div class="intro-item">
+                        <h3>Pédagogie innovante</h3>
+                        <p>Notre approche est basée sur l'apprentissage par projets, la pédagogie inversée et l'apprentissage bilingue. Nous formons des professionnels capables de s'adapter au marché du travail.</p>
+                    </div>
+                    <div class="intro-item">
+                        <h3>Immersion professionnelle</h3>
+                        <p>Nous renforçons l'employabilité de nos diplômés à travers des stages, des descentes sur le terrain et des voyages d'études.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="filieres">
+            <div class="container">
+                <h2>Nos 5 filières d'études</h2>
+                <div class="filiere-grid">
+                    <div class="filiere-card">
+                        <span class="icon">🔬</span>
+                        <h3>HSET</h3>
+                        <p>Hygiène - Sécurité - Environnement - Technologie</p>
+                    </div>
+                    <div class="filiere-card">
+                        <span class="icon">📈</span>
+                        <h3>Sciences Économiques</h3>
+                        <p>Analyse économique et gestion de projets de développement</p>
+                    </div>
+                    <div class="filiere-card">
+                        <span class="icon">📊</span>
+                        <h3>Management de Projet</h3>
+                        <p>Pilotage et coordination d'initiatives stratégiques</p>
+                    </div>
+                    <div class="filiere-card">
+                        <span class="icon">🗣️</span>
+                        <h3>Communication & Société</h3>
+                        <p>Métiers du journalisme, de la communication d'entreprise et sociale</p>
+                    </div>
+                    <div class="filiere-card">
+                        <span class="icon">💰</span>
+                        <h3>Finance</h3>
+                        <p>Gestion financière et analyse des marchés</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="competences">
+            <div class="container">
+                <h2>Compétences clés</h2>
+                <div class="competences-grid">
+                    <div class="competence-item" data-progress="90">
+                        <h4>Prise de décisions</h4>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                    </div>
+                    <div class="competence-item" data-progress="85">
+                        <h4>Gestion du temps</h4>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                    </div>
+                    <div class="competence-item" data-progress="95">
+                        <h4>Travail d'équipe</h4>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="vie-etudiante">
+            <div class="container">
+                <h2>Vie étudiante & Conférences</h2>
+                <div class="flex-content">
+                    <div class="text-content">
+                        <p>La vie associative tient une place importante à l'Institut ISS. Les étudiants animent plusieurs clubs, favorisant l'apprentissage et l'expression dans divers domaines : Art, Anglais, Français, Musique, Danse et Sport.</p>
+                        <p>De plus, nous proposons un programme de conférences thématiques quotidiennes.</p>
+                        <ul class="conferences-list">
+                            <li>Lundi du Management de projet</li>
+                            <li>Mardi de l'Entreprise</li>
+                            <li>Alarobia Kafé sera</li>
+                            <li>Thursday Roundtable</li>
+                            <li>Friday Talk</li>
+                        </ul>
+                    </div>
+                    <div class="media-content">
+                        <img src="https://example.com/path/to/dynamic_photo.jpg" alt="Photo d'étudiants en pleine discussion lors d'une conférence." style="width:100%; border-radius:10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="partenaires">
+            <div class="container">
+                <h2>Nos partenaires</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">Des alliés de l'innovation et de l'excellence qui contribuent à l'épanouissement de nos apprenants.</p>
+                <div class="partners-grid">
+                    <img src="https://example.com/path/to/logo-innov.png" alt="Logo INNOV" class="partner-logo">
+                    <img src="https://example.com/path/to/logo-pmfc.png" alt="Logo PMFC" class="partner-logo">
+                    <img src="https://example.com/path/to/logo-btc.png" alt="Logo BTC" class="partner-logo">
+                    <img src="https://example.com/path/to/logo-co.png" alt="Logo Co" class="partner-logo">
+                    <img src="https://example.com/path/to/logo-isl.png" alt="Logo Innovation Strategy Lab" class="partner-logo">
+                    <img src="https://example.com/path/to/logo-k4m.png" alt="Logo K4M" class="partner-logo">
+                    <img src="https://example.com/path/to/logo-jci.png" alt="Logo JCI" class="partner-logo">
+                    <img src="https://example.com/path/to/logo-af.png" alt="Logo Alliance Française" class="partner-logo">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <img src="https://example.com/path/to/qr-code.png" alt="QR Code de contact" class="qr-code">
+            <p>Immeuble Le Pouce Fitness Tsiadana - 2ème étage</p>
+            <p><a href="mailto:institutisscontact@gmail.com">institutisscontact@gmail.com</a></p>
+            <p><a href="tel:+261384333187">+261 38 43 331 87</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        if (target.id === 'competences') {
+                            document.querySelectorAll('.competence-item').forEach(item => {
+                                const progress = item.getAttribute('data-progress');
+                                item.style.setProperty('--progress-width', `${progress}%`);
+                                item.classList.add('animate');
+                            });
+                        }
+                        observer.unobserve(target);
+                    }
+                });
+            }, observerOptions);
+
+            const competencesSection = document.getElementById('competences');
+            if (competencesSection) {
+                observer.observe(competencesSection);
+            }
+        });
+    </script>
+
+</body>
+</html>

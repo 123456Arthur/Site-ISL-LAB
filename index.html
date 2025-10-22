@@ -14,102 +14,181 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <style>
-   /* Background plus clair avec un dégradé doux et moins d’opacité */
 .why-choose-us {
-    padding: 80px 40px;
-    background: linear-gradient(135deg, rgba(16, 43, 63, 0.7), rgba(27, 77, 94, 0.7));
-    backdrop-filter: blur(8px);
+    padding: 100px 40px;
+    background: linear-gradient(135deg, rgba(16, 43, 63, 0.9), rgba(27, 77, 94, 0.9));
+    backdrop-filter: blur(12px);
     text-align: center;
     position: relative;
-    overflow: visible;
+    overflow: hidden;
     z-index: 10;
 }
 
-/* Conteneur standard */
 .why-choose-us .container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Titre plus grand et lumineux avec un effet de halo léger */
 .why-choose-us .section-title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 52px;
-    color: #A7FFEB; /* Vert clair turquoise plus lumineux */
-    text-shadow: 0 0 8px #64FFDA; /* Halo turquoise lumineux */
-    margin-bottom: 25px;
-    animation: textGlow 3s ease-in-out infinite alternate;
+    font-size: 56px;
+    color: #A2D0FF;
+    text-shadow: 0 0 10px rgba(46, 139, 87, 0.8), 0 0 20px rgba(46, 139, 87, 0.6);
+    margin-bottom: 20px;
+    animation: textGlow 2s ease-in-out infinite alternate;
 }
 
-/* Sous-titre plus clair et espacé */
 .why-choose-us .section-subtitle {
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
-    color: #B2DFDB; /* Vert pastel clair */
-    margin-bottom: 50px;
-    opacity: 0.95;
+    color: #F5F5F5;
+    opacity: 0.9;
+    margin-bottom: 60px;
+    line-height: 1.6;
 }
 
-/* Grille avec plus de contraste clair */
 .atouts-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 35px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Cartes avec fond clair, bordures turquoise et ombre douce */
 .atout-card {
-    background: rgba(235, 248, 246, 0.9); /* Vert très clair presque blanc */
-    border: 2px solid #26A69A; /* Turquoise soutenu */
+    background: rgba(16, 43, 63, 0.95);
+    border: 2px solid transparent;
+    border-image: linear-gradient(135deg, #2E8B57, #167E7E) 1;
     padding: 30px;
     border-radius: 16px;
-    box-shadow: 0 6px 18px rgba(38, 166, 154, 0.3);
-    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    box-shadow: 0 8px 24px rgba(46, 139, 87, 0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-image 0.4s ease;
     position: relative;
-    overflow: visible;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-/* Animation au survol avec légère élévation et intensification d’ombre */
 .atout-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 14px 34px rgba(38, 166, 154, 0.5);
-    border-color: #1DE9B6; /* Vert turquoise plus clair */
+    transform: translateY(-12px);
+    box-shadow: 0 16px 40px rgba(46, 139, 87, 0.6);
+    border-image: linear-gradient(135deg, #167E7E, #2E8B57) 1;
 }
 
-/* Icônes plus colorées, plus grandes, avec ombre turquoise */
 .atout-card .icon {
-    font-size: 3.2rem;
-    color: #009688;
-    margin-bottom: 22px;
-    filter: drop-shadow(0 0 6px rgba(0, 150, 136, 0.7));
-    transition: transform 0.35s ease, filter 0.35s ease, color 0.35s ease;
+    font-size: 2.8rem; 
+    color: #2E8B57;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 8px rgba(46, 139, 87, 0.7));
+    transition: transform 0.4s ease, filter 0.4s ease, color 0.4s ease;
 }
 
-/* Croissance légèrement amplifiée et lumière au survol */
 .atout-card:hover .icon {
-    transform: scale(1.25);
-    filter: drop-shadow(0 0 10px rgba(0, 150, 136, 0.9));
-    color: #26A69A;
+    transform: scale(1.15); 
+    filter: drop-shadow(0 0 12px rgba(46, 139, 87, 0.9));
+    color: #167E7E;
 }
 
-/* Titres sombres pour un bon contraste */
 .atout-card h3 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 26px;
-    color: #004D40; /* Vert sombre */
-    margin-bottom: 14px;
+    color: #A2D0FF;
+    margin-bottom: 12px;
+    text-shadow: 0 0 5px rgba(46, 139, 87, 0.5);
+    line-height: 1.3;
 }
 
-/* Texte plus foncé pour meilleure lisibilité */
 .atout-card p {
     font-family: 'Poppins', sans-serif;
-    font-size: 17px;
-    color: #00695C;
+    font-size: 16px;
+    color: #F5F5F5;
     opacity: 0.9;
+    line-height: 1.6;
+    max-width: 90%; 
+}
+
+
+@keyframes textGlow {
+    0% {
+        text-shadow: 0 0 10px rgba(46, 139, 87, 0.8), 0 0 20px rgba(46, 139, 87, 0.6), 0 0 30px rgba(46, 139, 87, 0.4);
+    }
+    100% {
+        text-shadow: 0 0 15px rgba(46, 139, 87, 1), 0 0 30px rgba(46, 139, 87, 0.8), 0 0 50px rgba(46, 139, 87, 0.6);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .why-choose-us {
+        padding: 60px 20px;
+    }
+
+    .why-choose-us .section-title {
+        font-size: 40px;
+    }
+
+    .why-choose-us .section-subtitle {
+        font-size: 18px;
+        margin-bottom: 40px;
+    }
+
+    .atouts-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .atout-card {
+        padding: 25px;
+    }
+
+    .atout-card .icon {
+        font-size: 2.5rem;
+    }
+
+    .atout-card h3 {
+        font-size: 24px;
+    }
+
+    .atout-card p {
+        font-size: 15px;
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .why-choose-us {
+        padding: 40px 15px;
+    }
+
+    .why-choose-us .section-title {
+        font-size: 32px;
+    }
+
+    .why-choose-us .section-subtitle {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+
+    .atout-card {
+        padding: 20px;
+    }
+
+    .atout-card .icon {
+        font-size: 2.2rem;
+    }
+
+    .atout-card h3 {
+        font-size: 22px;
+    }
+
+    .atout-card p {
+        font-size: 14px;
+        max-width: 100%;
+    }
 }
 
         body {
@@ -119,8 +198,6 @@
             overflow-x: hidden;
             position: relative;
         }
-
-        /* Header */
         .header {
             display: flex;
             justify-content: space-between;
@@ -194,8 +271,6 @@
         .nav-menu a:hover {
             color: #2E8B57;
         }
-
-        /* Hero Section with Video */
         .hero {
             min-height: 100vh;
             position: relative;
@@ -286,8 +361,6 @@
             transform: scale(1.1);
             box-shadow: 0 0 35px rgba(46, 139, 87, 1);
         }
-
-        /* Carousel Section */
         .carousel {
             padding: 80px 40px;
             text-align: center;
@@ -944,11 +1017,12 @@
                 <li><a href="#packs">Packs</a></li>
                 <li><a href="#carousel">Carrousel</a></li>
                 <li><a href="#realisations">Réalisations</a></li>
+                 <li><a href="information.html">Information</a></li>
                 <li><a href="#contact">Contact</a></li>
+                
             </ul>
         </nav>
     </header>
-
     <section id="home" class="hero">
         <video autoplay muted loop playsinline>
             <source src="ISL000.mp4" type="video/mp4" />
@@ -1067,9 +1141,9 @@
                 <p>Optimisez votre efficacité et dirigez avec vision.</p>
                 <ul>
                     <li><span class="icon">🧠</span> Efficacité professionnelle</li>
-                    <li><span class="icon">📊</span> Bureautique : MS Office, analyse</li>
+                    <li><span class="icon">📊</span> Technique informatiques et bureautique </li>
                     <li><span class="icon">🌟</span> Développement personnel</li>
-                    <li><span class="icon">🌍</span> Anglais/français pro</li>
+                    <li><span class="icon">🌍</span> Anglais & français </li>
                 </ul>
                 <p class="price">250 000 Ar / 40h</p>
                 <a href="#contact" class="cta-button">S’inscrire</a>
@@ -1079,11 +1153,11 @@
                 <h3>Déclic Pro</h3>
                 <p>Maîtrisez votre carrière avec des compétences clés.</p>
                 <ul>
-                    <li><span class="icon">📚</span> Bureautique : MS Office</li>
-                    <li><span class="icon">🛠️</span> Compétences techniques</li>
-                    <li><span class="icon">🌟</span> Leadership</li>
+                    <li><span class="icon">📚</span> Technique informatiques et bureautiques</li>
+                    <li><span class="icon">🛠️</span> Evaluation des compétences et gestion du temps </li>
+                    <li><span class="icon">🌟</span> Développement personnel et leadership</li>
                     <li><span class="icon">🧠</span> Intelligence émotionnelle</li>
-                    <li><span class="icon">🌍</span> Anglais/français affaires</li>
+                    <li><span class="icon">🌍</span> Développement des compétences transversales</li>
                 </ul>
                 <p class="price">250 000 Ar / 40h</p>
                 <a href="#contact" class="cta-button">S’inscrire</a>
@@ -1095,8 +1169,9 @@
                 <ul>
                     <li><span class="icon">🧠</span> Intelligence émotionnelle</li>
                     <li><span class="icon">🗣️</span> Techniques de communication</li>
-                    <li><span class="icon">🌟</span> Leadership</li>
-                    <li><span class="icon">💡</span> Créativité</li>
+                    <li><span class="icon">🌟</span> Leadership et management</li>
+                    <li><span class="icon">💡</span> Créativité et pensée critique</li>
+                    <li><span class="icon">🧘‍♂️</span> Développement personnel</li>
                 </ul>
                 <p class="price">350 000 Ar / 40h</p>
                 <a href="#contact" class="cta-button">S’inscrire</a>
@@ -1106,11 +1181,11 @@
                 <h3>Skills for Success</h3>
                 <p>Adaptez-vous aux marchés avec polyvalence.</p>
                 <ul>
-                    <li><span class="icon">💻</span> Bureautique et IA</li>
-                    <li><span class="icon">📅</span> Planification de carrière</li>
-                    <li><span class="icon">🗣️</span> Communication</li>
+                    <li><span class="icon">💻</span> Bureautique et outils technologiques </li>
+                    <li><span class="icon">📅</span>  développement personnel et Planification de carrière</li>
+                    <li><span class="icon">🗣️</span> Communication et relations interpersonnelles</li>
                     <li><span class="icon">🌟</span> Leadership</li>
-                    <li><span class="icon">📋</span> Gestion de projet</li>
+                    <li><span class="icon">📋</span> Organisation </li>
                 </ul>
                 <p class="price">250 000 Ar / 40h</p>
                 <a href="#contact" class="cta-button">S’inscrire</a>
@@ -1120,8 +1195,8 @@
                 <h3>Digital Impact</h3>
                 <p>Pilotez votre organisation dans le digital.</p>
                 <ul>
-                    <li><span class="icon">🌐</span> Leadership digital</li>
-                    <li><span class="icon">💻</span> Outils numériques</li>
+                    <li><span class="icon">🌐</span> Leadership digital et vision stratégique</li>
+                    <li><span class="icon">💻</span> Bureautique et outils numériques</li>
                     <li><span class="icon">🌟</span> Développement personnel</li>
                     <li><span class="icon">📣</span> Communication digitale</li>
                 </ul>
@@ -1133,10 +1208,10 @@
                 <h3>Mindset Stratégique</h3>
                 <p>Anticipez et adaptez vos stratégies.</p>
                 <ul>
-                    <li><span class="icon">📈</span> Stratégie et planification</li>
-                    <li><span class="icon">🌟</span> Vision stratégique</li>
-                    <li><span class="icon">🛠️</span> Analyse stratégique</li>
-                    <li><span class="icon">🚀</span> Gestion du changement</li>
+                    <li><span class="icon">📈</span>  Comprendre la Stratégie et planification</li>
+                    <li><span class="icon">🌟</span>Développement d'une Vision stratégique</li>
+                    <li><span class="icon">🛠️</span> Outils et méthodes d'analyse stratétiques </li>
+                    <li><span class="icon">🚀</span> Leadership stratégique et gestion du changement </li>
                 </ul>
                 <p class="price">250 000 Ar / 50h</p>
                 <a href="#contact" class="cta-button">S’inscrire</a>
@@ -1146,10 +1221,11 @@
                 <h3>Développement et Impact Social</h3>
                 <p>Intégrez la responsabilité sociale.</p>
                 <ul>
-                    <li><span class="icon">🌍</span> Développement social</li>
-                    <li><span class="icon">📋</span> Gestion de projets sociaux</li>
-                    <li><span class="icon">🤝</span> Mobilisation communautaire</li>
-                    <li><span class="icon">🌐</span> Transformation digitale</li>
+                    <li><span class="icon">🌍</span> Comprendre le  Développement social</li>
+                    <li><span class="icon">📋</span> Gestion de projets et impact social</li>
+                    <li><span class="icon">🤝</span> Engagement des parties prenantes </li>
+                    <li><span class="icon">🌐</span> Leadership dans l'action sociale </li>
+                    <li><span class="icon">🔄</span> Transformation digitale et impact social </li>
                 </ul>
                 <p class="price">350 000 Ar / 50h</p>
                 <a href="#contact" class="cta-button">S’inscrire</a>
@@ -1242,6 +1318,7 @@
             <option value="mindset-strategique">Mindset Stratégique - 250 000 Ar / 50h</option>
             <option value="impact-social">Développement et Impact Social - 350 000 Ar / 50h</option>
             <option value="design-hcd">Design pour le Développement Social - 350 000 Ar / 40h</option>
+             <option value="autre">Autre</option>
         </select>
         <textarea name="message" placeholder="Votre message" required></textarea>
         <button type="submit" class="cta-button">Envoyer</button>
@@ -1255,16 +1332,12 @@
   align-items: center;
   gap: 30px;
 }
-
-/* Conteneur des deux grands logos côte à côte */
 .main-logos {
   display: flex;
   gap: 40px;
   justify-content: center;
   width: 100%;
 }
-
-/* Styles des logos principaux */
 .main-logos img {
   border-radius: 50%;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -1280,8 +1353,6 @@
   transform: scale(1.1);
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
-
-/* Conteneur des logos plus petits */
 .smaller-logos {
   display: flex;
   justify-content: center;
@@ -1306,7 +1377,6 @@
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
-
 </style>
     <footer class="footer">
         <div class="footer-content">
@@ -1323,16 +1393,13 @@
     <img src="BTC.jpg" alt="BTC Logo" loading="lazy">
   </div>
 </div>
-
-
-            <div class="contact-info">
+  <div class="contact-info">
                 <p>📞 038 86 410 98 | 📧 connect.innovstrategyISL@gmail.com</p>
                 <p>© 2025 Innovation & Strategy Lab. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
     <style>
-/* Mobile optimizations for contact section */
 @media (max-width: 768px) {
     .contact {
         padding: 40px 20px;
@@ -1401,7 +1468,6 @@
 }
     </style>
     <script>
-// Existing GSAP and Three.js animations
 window.addEventListener('scroll', () => {
     const header = document.querySelector('.header');
     if (window.pageYOffset > 100) {
@@ -1467,8 +1533,6 @@ window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
 });
-
-// Phone number input: Auto-prepend +261
 const phoneInput = document.getElementById('phone');
 phoneInput.addEventListener('focus', () => {
     if (!phoneInput.value.startsWith('+261')) {
@@ -1481,7 +1545,6 @@ phoneInput.addEventListener('input', () => {
     }
 });
 
-// Form submission handling with full reset
 document.getElementById('contact-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -1508,16 +1571,16 @@ document.getElementById('contact-form').addEventListener('submit', async (e) => 
                 { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }
             );
 
-            // Reset form and section
+        
             form.reset();
             phoneInput.value = '+261 ';
-            // Animate contact section to reset appearance
+
             gsap.fromTo(contactSection, 
                 { opacity: 0.5, y: 10 },
                 { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', delay: 1 }
             );
             setTimeout(() => {
-                formMessage.style.display = 'none'; // Hide message after 5 seconds
+                formMessage.style.display = 'none';
             }, 5000);
         } else {
             throw new Error('Erreur lors de l’envoi du formulaire.');
@@ -1539,14 +1602,12 @@ document.getElementById('contact-form').addEventListener('submit', async (e) => 
     }
 });
 
-// Ensure form resets on page refresh
 window.addEventListener('load', () => {
     const form = document.getElementById('contact-form');
     form.reset();
     phoneInput.value = '+261 ';
 });
 
-// Security: Prevent right-click on images and videos
 document.addEventListener('contextmenu', (e) => {
     if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO') {
         e.preventDefault();
@@ -1554,26 +1615,21 @@ document.addEventListener('contextmenu', (e) => {
     }
 });
 
-// Security: Disable video controls and downloads
 document.querySelectorAll('video').forEach(video => {
     video.setAttribute('controlsList', 'nodownload nofullscreen noremoteplayback');
     video.setAttribute('disablePictureInPicture', '');
     video.addEventListener('contextmenu', (e) => e.preventDefault());
 });
 
-// Security: Prevent text selection outside form fields
 document.addEventListener('selectstart', (e) => {
     if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'SELECT') {
         e.preventDefault();
     }
 });
 
-// Security: Prevent framing
 if (window.top !== window.self) {
     window.top.location = window.self.location;
 }
-
-// Security: Detect developer tools and warn
 (function detectDevTools() {
     let devToolsOpen = false;
     const threshold = 160;
@@ -1594,10 +1650,6 @@ if (window.top !== window.self) {
     window.addEventListener('resize', checkDevTools);
     setInterval(checkDevTools, 1000);
 })();
-
-
-
-
     </script>
 </body>
 </html>

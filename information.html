@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Demandez des informations supplémentaires sur les formations et services d'Innovation & Strategy Lab (ISL).">
+    <meta name="keywords" content="formation, ISL, développement personnel, informations, contact">
+    <meta name="author" content="Innovation & Strategy Lab">
+    <title>Demande d'Informations | Innovation & Strategy Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@400;600&family=Segoe+UI&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="isl-favicon.svg">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="index.html">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #102B3F, #1B4D5E);
+            color: #F5F5F5;
+            overflow-x: hidden;
+            position: relative;
+            margin: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background: rgba(16, 43, 63, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .header.scrolled {
+            transform: translateY(-100%);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 70px;
+            margin-right: 20px;
+            animation: logoSpin 2s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 5px #2E8B57);
+        }
+
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 32px;
+            color: #F5F5F5;
+            text-shadow: 0 0 5px #167E7E;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            color: #F5F5F5;
+            text-decoration: none;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 18px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #2E8B57;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: #2E8B57;
+        }
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(16, 43, 63, 0.8), rgba(27, 77, 94, 0.8));
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6) contrast(1.1);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 90vw;
+            padding: 30px 40px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(46, 139, 87, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 4rem;
+            color: #A2D0FF;
+            text-shadow: 0 0 10px rgba(46, 139, 87, 0.8), 0 0 20px rgba(46, 139, 87, 0.6), 0 0 30px rgba(46, 139, 87, 0.4);
+            margin-bottom: 1.2rem;
+            text-align: center;
+            line-height: 1.3;
+            max-width: 85%;
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        .hero-content p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #cce6ffcc;
+            margin-bottom: 2rem;
+            text-align: center;
+            max-width: 85%;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #2E8B57, #167E7E);
+            border-radius: 50px;
+            color: #F5F5F5;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            text-decoration: none;
+            box-shadow: 0 0 25px rgba(46, 139, 87, 0.8);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #1B4D5E, #2E8B57);
+            transform: scale(1.1);
+            box-shadow: 0 0 35px rgba(46, 139, 87, 1);
+        }
+        .info-form {
+            padding: 80px 40px;
+            text-align: center;
+            background: rgba(16, 43, 63, 0.9);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-form h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 48px;
+            color: #A2D0FF;
+            text-shadow: 0 0 8px #167E7E;
+            margin-bottom: 20px;
+        }
+
+        .info-form p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            color: #F5F5F5;
+            margin-bottom: 30px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-container input,
+        .form-container select,
+        .form-container textarea {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid #2E8B57;
+            border-radius: 8px;
+            color: #F5F5F5;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: border 0.3s, box-shadow 0.3s;
+        }
+
+        .form-container input:focus,
+        .form-container select:focus,
+        .form-container textarea:focus {
+            border-color: #167E7E;
+            box-shadow: 0 0 10px #2E8B57;
+            outline: none;
+        }
+
+        .form-container textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-container select {
+            background: linear-gradient(90deg, #102B3F, #167E7E);
+            appearance: none;
+            padding-right: 40px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0YyRjVGNyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTIgOC41bC01LjUgNS41aDExbC01LjUtNS41eiIvPjwvc3ZnPg==');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 20px;
+        }
+
+        .form-container option {
+            color: #102B3F;
+            background: #F5F5F5;
+        }
+        .footer {
+            background: rgba(16, 43, 63, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer .quote {
+            font-family: 'Montserrat', sans-serif;
+            font-style: italic;
+            font-size: 24px;
+            color: #167E7E;
+            margin-bottom: 20px;
+        }
+
+        .partners {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .main-logos {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .main-logos img {
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background: #fff;
+            padding: 15px;
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .main-logos img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .smaller-logos {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .smaller-logos img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: #f7f7f7;
+            padding: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            opacity: 0.85;
+            object-fit: contain;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .smaller-logos img:hover {
+            opacity: 1;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .contact-info p {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 16px;
+            color: #F5F5F5;
+            margin: 8px 0;
+        }
+        @keyframes logoSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 10px rgba(46, 139, 87, 0.8), 0 0 20px rgba(46, 139, 87, 0.6), 0 0 30px rgba(46, 139, 87, 0.4); }
+            100% { text-shadow: 0 0 15px rgba(46, 139, 87, 1), 0 0 30px rgba(46, 139, 87, 0.8), 0 0 50px rgba(46, 139, 87, 0.6); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .hero-content h2 {
+                font-size: 2.5rem;
+                max-width: 95%;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+                max-width: 95%;
+            }
+
+            .hero-content {
+                padding: 20px 25px;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1.2rem;
+            }
+
+            .info-form {
+                padding: 40px 20px;
+            }
+
+            .info-form h2 {
+                font-size: 36px;
+            }
+
+            .info-form p {
+                font-size: 16px;
+            }
+
+            .form-container {
+                max-width: 100%;
+            }
+
+            .main-logos img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .smaller-logos img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .hero-content {
+                padding: 15px 20px;
+            }
+
+            .info-form h2 {
+                font-size: 28px;
+            }
+
+            .info-form p {
+                font-size: 14px;
+            }
+
+            .form-container input,
+            .form-container select,
+            .form-container textarea {
+                font-size: 13px;
+                padding: 10px;
+            }
+
+            .form-container button.cta-button {
+                font-size: 1rem;
+                padding: 8px 25px;
+            }
+
+            .main-logos {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .main-logos img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .smaller-logos img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="isl.jpg" alt="ISL Logo" class="logo">
+            <h1>Innovation & Strategy Lab</h1>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html#home">Accueil</a></li>
+                <li><a href="index.html#about">Qui sommes-nous</a></li>
+                <li><a href="index.html#pourquoi-nous">Pourquoi-nous ?</a></li>
+                <li><a href="index.html#packs">Packs</a></li>
+                <li><a href="index.html#carousel">Carrousel</a></li>
+                <li><a href="index.html#realisations">Réalisations</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <video autoplay muted loop playsinline>
+            <source src="ISL000.mp4" type="video/mp4" />
+            Votre navigateur ne supporte pas la vidéo.
+        </video>
+        <div class="hero-content">
+            <h2>Obtenez des Informations supplémentaires/h2>
+            <p>Remplissez le formulaire ci-dessous pour en savoir plus sur nos packs de formations et nos services sur mesure. Notre équipe vous répondra rapidement.</p>
+            <a href="#info-form" class="cta-button">Remplir le formulaire</a>
+        </div>
+    </section>
+    <section id="info-form" class="info-form">
+    <h2>Demande d'Informations</h2>
+    <p>Contactez-nous pour découvrir comment nous pouvons vous aider à atteindre vos objectifs.</p>
+    <form id="info-request-form" class="form-container" action="https://formspree.io/f/xwprzgqv" method="POST">
+        <input type="text" name="name" placeholder="Nom" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="phone" id="phone" placeholder="Numéro de téléphone (+261)" required>
+        <select name="subject" id="subject" required>
+            <option value="" disabled selected>Sujet de votre demande</option>
+            <option value="formations">Informations sur les formations</option>
+            <option value="coaching">Coaching personnalisé</option>
+            <option value="partenariats">Partenariats</option>
+            <option value="autre">Autre</option>
+        </select>
+        <textarea name="message" placeholder="Votre message" required></textarea>
+        <button type="submit" class="cta-button">Envoyer</button>
+    </form>
+    <div id="form-message" style="display: none; margin-top: 20px; font-family: 'Poppins', sans-serif; font-size: 18px; color: #2E8B57;"></div>
+</section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="quote">"Osez Innover, Apprenez à exceller"</p>
+            <div class="partners">
+                <div class="main-logos">
+                    <img src="IISS logo.jpg" alt="ISS Logo" loading="lazy">
+                    <img src="K4M.jpg" alt="K’s 4 Mindshift Logo" loading="lazy">
+                </div>
+                <div class="smaller-logos">
+                    <img src="apmfc.png" alt="APMFC Logo" loading="lazy">
+                    <img src="Is studio.png" alt="IS STUDIO Logo" loading="lazy">
+                    <img src="BTC.jpg" alt="BTC Logo" loading="lazy">
+                </div>
+            </div>
+            <div class="contact-info">
+                <p>📞 038 86 410 98 | 📧 connect.innovstrategyISL@gmail.com</p>
+                <p>© 2025 Innovation & Strategy Lab. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    if (window.pageYOffset > 100) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+gsap.registerPlugin(ScrollTrigger);
+gsap.utils.toArray('.hero-content h2, .hero-content p, .cta-button, .form-container').forEach((element) => {
+    gsap.from(element, {
+        scrollTrigger: {
+            trigger: element,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+        },
+        opacity: 0,
+        y: 20,
+        duration: 1,
+        ease: 'power2.out',
+    });
+});
+
+const phoneInput = document.getElementById('phone');
+
+
+window.addEventListener('load', () => {
+    const form = document.getElementById('info-request-form');
+    form.reset();
+    phoneInput.value = '+261 ';
+});
+
+phoneInput.addEventListener('focus', () => {
+    if (!phoneInput.value.trim()) {
+        phoneInput.value = '+261 ';
+    }
+});
+
+phoneInput.addEventListener('input', () => {
+    let value = phoneInput.value.replace(/[^0-9+]/g, ''); 
+    if (!value.startsWith('+261')) {
+        value = '+261' + value.replace(/^\+261/, '').replace(/^[\s+]+/, '');
+    }
+    phoneInput.value = value;
+
+ 
+    const phoneRegex = /^\+261(3[2-4]|[2-9][0-9])[0-9]{7}$/;
+    if (!phoneRegex.test(value)) {
+        phoneInput.setCustomValidity('Veuillez entrer un numéro malgache valide (ex: +261 34 123 4567)');
+    } else {
+        phoneInput.setCustomValidity('');
+    }
+});
+document.getElementById('info-request-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formMessage = document.getElementById('form-message');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const infoFormSection = document.querySelector('.info-form');
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'Envoi en cours...';
+
+    const phoneValue = phoneInput.value.replace(/\s/g, ''); 
+    const phoneRegex = /^\+261(3[2-4]|[2-9][0-9])[0-9]{7}$/;
+    if (!phoneRegex.test(phoneValue)) {
+        formMessage.style.display = 'block';
+        formMessage.style.color = '#ff4d4d';
+        formMessage.textContent = 'Veuillez entrer un numéro de téléphone valide.';
+        gsap.fromTo(formMessage, 
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }
+        );
+        submitButton.disabled = false;
+        submitButton.textContent = 'Envoyer';
+        return;
+    }
+
+    try {
+        const formData = new FormData(form);
+        formData.set('phone', phoneValue); 
+
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+            formMessage.style.display = 'block';
+            formMessage.style.color = '#2E8B57';
+            formMessage.textContent = 'Merci, nous allons vous contacter au plus vite !';
+            gsap.fromTo(formMessage, 
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }
+            );
+
+            form.reset();
+            phoneInput.value = '+261 ';
+
+            gsap.fromTo(infoFormSection, 
+                { opacity: 0.5, y: 10 },
+                { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', delay: 1 }
+            );
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        } else {
+            throw new Error('Erreur lors de l’envoi du formulaire.');
+        }
+    } catch (error) {
+        formMessage.style.display = 'block';
+        formMessage.style.color = '#ff4d4d';
+        formMessage.textContent = 'Une erreur s’est produite. Veuillez réessayer.';
+        gsap.fromTo(formMessage, 
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }
+        );
+        setTimeout(() => {
+            formMessage.style.display = 'none';
+        }, 5000);
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Envoyer';
+    }
+});
+
+
+document.addEventListener('contextmenu', (e) => {
+    if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO') {
+        e.preventDefault();
+        alert('Clic droit désactivé pour protéger le contenu.');
+    }
+});
+
+document.querySelectorAll('video').forEach(video => {
+    video.setAttribute('controlsList', 'nodownload nofullscreen noremoteplayback');
+    video.setAttribute('disablePictureInPicture', '');
+    video.addEventListener('contextmenu', (e) => e.preventDefault());
+});
+
+
+document.addEventListener('selectstart', (e) => {
+    if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA' && e.target.tagName !== 'SELECT') {
+        e.preventDefault();
+    }
+});
+
+
+if (window.top !== window.self) {
+    window.top.location = window.self.location;
+}
+
+
+(function detectDevTools() {
+    let devToolsOpen = false;
+    const threshold = 160;
+
+    const checkDevTools = () => {
+        const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+        const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+        if (widthThreshold || heightThreshold) {
+            if (!devToolsOpen) {
+                devToolsOpen = true;
+                alert('Veuillez ne pas utiliser les outils de développement pour accéder au contenu.');
+            }
+        } else {
+            devToolsOpen = false;
+        }
+    };
+
+    window.addEventListener('resize', checkDevTools);
+    setInterval(checkDevTools, 1000);
+})();
+    </script>
+</body>
+</html>

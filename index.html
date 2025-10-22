@@ -14,146 +14,103 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <style>
-        /* Pourquoi choisir notre entité ? */
+   /* Background plus clair avec un dégradé doux et moins d’opacité */
 .why-choose-us {
     padding: 80px 40px;
-    background: linear-gradient(135deg, rgba(16, 43, 63, 0.9), rgba(27, 77, 94, 0.9)); /* Blue-green gradient, matching .header, .carousel */
-    backdrop-filter: blur(10px); /* Frosted glass effect for premium feel */
+    background: linear-gradient(135deg, rgba(16, 43, 63, 0.7), rgba(27, 77, 94, 0.7));
+    backdrop-filter: blur(8px);
     text-align: center;
     position: relative;
     overflow: visible;
     z-index: 10;
 }
 
+/* Conteneur standard */
 .why-choose-us .container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
+/* Titre plus grand et lumineux avec un effet de halo léger */
 .why-choose-us .section-title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 48px;
-    color: #F5F5F5; /* White from logo */
-    text-shadow: 0 0 8px #4DB6AC; /* Light blue-green shadow for highlight */
-    margin-bottom: 20px;
-    animation: textGlow 2s ease-in-out infinite alternate; /* Consistent with .hero */
+    font-size: 52px;
+    color: #A7FFEB; /* Vert clair turquoise plus lumineux */
+    text-shadow: 0 0 8px #64FFDA; /* Halo turquoise lumineux */
+    margin-bottom: 25px;
+    animation: textGlow 3s ease-in-out infinite alternate;
 }
 
+/* Sous-titre plus clair et espacé */
 .why-choose-us .section-subtitle {
     font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-    color: #E0E0E0; /* Soft gray for contrast */
-    margin-bottom: 40px;
-    opacity: 0.9;
+    font-size: 20px;
+    color: #B2DFDB; /* Vert pastel clair */
+    margin-bottom: 50px;
+    opacity: 0.95;
 }
 
+/* Grille avec plus de contraste clair */
 .atouts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    gap: 35px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
+/* Cartes avec fond clair, bordures turquoise et ombre douce */
 .atout-card {
-    background: rgba(16, 43, 63, 0.85); /* Dark blue-green, matching .pack-card */
-    border: 2px solid #2E7D32; /* Logo green */
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(22, 126, 126, 0.4); /* Blue-green shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    background: rgba(235, 248, 246, 0.9); /* Vert très clair presque blanc */
+    border: 2px solid #26A69A; /* Turquoise soutenu */
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(38, 166, 154, 0.3);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
     position: relative;
     overflow: visible;
 }
 
+/* Animation au survol avec légère élévation et intensification d’ombre */
 .atout-card:hover {
-    transform: translateY(-8px); /* Consistent with .pack-card */
-    box-shadow: 0 12px 30px rgba(22, 126, 126, 0.6); /* Stronger blue-green shadow */
-    border-color: #167E7E; /* Blue-green on hover */
+    transform: translateY(-10px);
+    box-shadow: 0 14px 34px rgba(38, 166, 154, 0.5);
+    border-color: #1DE9B6; /* Vert turquoise plus clair */
 }
 
+/* Icônes plus colorées, plus grandes, avec ombre turquoise */
 .atout-card .icon {
-    font-size: 2.8rem;
-    color: #2E7D32; /* Logo green */
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 5px rgba(22, 126, 126, 0.5)); /* Blue-green shadow */
-    transition: transform 0.3s ease, filter 0.3s ease, color 0.3s ease;
+    font-size: 3.2rem;
+    color: #009688;
+    margin-bottom: 22px;
+    filter: drop-shadow(0 0 6px rgba(0, 150, 136, 0.7));
+    transition: transform 0.35s ease, filter 0.35s ease, color 0.35s ease;
 }
 
+/* Croissance légèrement amplifiée et lumière au survol */
 .atout-card:hover .icon {
-    transform: scale(1.15);
-    filter: drop-shadow(0 0 8px rgba(22, 126, 126, 0.8));
-    color: #167E7E; /* Blue-green on hover */
+    transform: scale(1.25);
+    filter: drop-shadow(0 0 10px rgba(0, 150, 136, 0.9));
+    color: #26A69A;
 }
 
+/* Titres sombres pour un bon contraste */
 .atout-card h3 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 24px;
-    color: #F5F5F5; /* White from logo */
-    margin-bottom: 12px;
+    font-size: 26px;
+    color: #004D40; /* Vert sombre */
+    margin-bottom: 14px;
 }
 
+/* Texte plus foncé pour meilleure lisibilité */
 .atout-card p {
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    color: #E0E0E0; /* Soft gray for readability */
-    opacity: 0.85;
+    font-size: 17px;
+    color: #00695C;
+    opacity: 0.9;
 }
-
-/* Animations (reused from global styles) */
-@keyframes textGlow {
-    0% { text-shadow: 0 0 10px rgba(22, 126, 126, 0.8), 0 0 20px rgba(22, 126, 126, 0.6), 0 0 30px rgba(22, 126, 126, 0.4); }
-    100% { text-shadow: 0 0 15px rgba(22, 126, 126, 1), 0 0 30px rgba(22, 126, 126, 0.8), 0 0 50px rgba(22, 126, 126, 0.6); }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .why-choose-us {
-        padding: 60px 20px;
-    }
-
-    .why-choose-us .section-title {
-        font-size: 36px;
-    }
-
-    .why-choose-us .section-subtitle {
-        font-size: 16px;
-    }
-
-    .atouts-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .atout-card {
-        padding: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .why-choose-us {
-        padding: 40px 15px;
-    }
-
-    .atout-card .icon {
-        font-size: 2.5rem;
-    }
-
-    .atout-card h3 {
-        font-size: 20px;
-    }
-
-    .atout-card p {
-        font-size: 14px;
-    }
-}
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -1099,34 +1056,6 @@
     </div>
   </div>
 </section>
-<style>
-
-
-
-
-
-    
-</style>
-<script>
-gsap.utils.toArray('.atouts-grid .atout-card').forEach((card) => {
-  gsap.fromTo(
-    card,
-    { opacity: 0, y: 20 }, 
-    {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 80%',
-        toggleActions: 'play none none none',
-      },
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: 'power2.out',
-    }
-  );
-});
-</script>
-
     <section id="packs" class="packs">
         <h2>Nos Packs de formation </h2>
         <p class="packs-intro">Sélectionnez le parcours qui transformera votre potentiel.</p>

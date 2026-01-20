@@ -1130,6 +1130,204 @@
     </div>
   </div>
 </section>
+<section id="conferences" class="conferences-professional">
+  <div class="container">
+    <h2>Conférences Hebdomadaires</h2>
+    <p class="subtitle">Planning des sessions live - 19 - 23 Janvier 2026</p>
+    
+    <div class="professional-edt">
+      <div class="edt-row">
+        <span class="day">Lundi</span>
+        <span class="time">12:00 à 13:00</span>
+        <span class="title">Efficacité Professional</span>
+        <a href="#" class="join-btn"> 19 janvier 2026 </a>
+      </div>
+      
+      <div class="edt-row">
+        <span class="day">Mardi</span>
+        <span class="time">12:00 à 13:00</span>
+        <span class="title">............... </span>
+        <a href="#" class="join-btn">20 janvier 2026 </a>
+      </div>
+      
+      <div class="edt-row">
+        <span class="day">Mercredi</span>
+        <span class="time">12:00 à 13:00</span>
+        <span class="title">Critique moi et je te dirai qui tu es ! </span>
+        <a href="#" class="join-btn">21 janvier 2026</a>
+      </div>
+      
+      <div class="edt-row">
+        <span class="day">Jeudi</span>
+        <span class="time">12:00 à 13:00</span>
+        <span class="title">...............</span>
+        <a href="#" class="join-btn">22 janvier 2026</a>
+      </div>
+      
+      <div class="edt-row">
+        <span class="day">Vendredi</span>
+        <span class="time">12:00 à 13:00</span>
+        <span class="title">...............</span>
+        <a href="#" class="join-btn">23 janvier 2026 </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</section>
+
+<style>
+.conferences-professional {
+  padding: 80px 40px;
+  background: rgba(16, 43, 63, 0.85);
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 1000px;
+}
+
+.conferences-professional h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: #A2D0FF;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #ccc;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.professional-edt {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(46,139,87,0.3);
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.edt-row {
+  display: flex;
+  align-items: center;
+  padding: 20px 30px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: background-color 0.2s ease;
+}
+
+.edt-row:last-child {
+  border-bottom: none;
+}
+
+.edt-row:hover {
+  background: rgba(46,139,87,0.1);
+}
+
+.edt-row.active {
+  background: rgba(46,139,87,0.15);
+  border-left: 4px solid #2E8B57;
+}
+
+.day {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #A2D0FF;
+  min-width: 80px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.time {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ccc;
+  min-width: 70px;
+  margin-left: 20px;
+}
+
+.title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #F5F5F5;
+  flex: 1;
+  margin-left: 20px;
+}
+
+.join-btn {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #2E8B57;
+  text-decoration: none;
+  padding: 8px 20px;
+  border: 1px solid rgba(46,139,87,0.5);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.join-btn:hover {
+  background: #2E8B57;
+  color: white;
+  border-color: #2E8B57;
+  transform: translateY(-1px);
+}
+
+.join-btn.live {
+  background: #dc3545;
+  color: white;
+  border-color: #dc3545;
+  animation: pulse-subtle 2s infinite;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@media (max-width: 768px) {
+  .conferences-professional {
+    padding: 60px 20px;
+    margin: 20px;
+  }
+  
+  .edt-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 10px;
+  }
+  
+  .title {
+    margin-left: 0;
+    font-size: 16px;
+  }
+}
+
+</style>
+
+<script>
+gsap.from('.edt-row', {
+  opacity: 0,
+  y: 20,
+  duration: 0.6,
+  stagger: 0.1,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: ".professional-edt",
+    start: "top 80%"
+  }
+});
+
+</script>
+
     <section id="packs" class="packs">
         <h2>Nos Packs de formation </h2>
         <p class="packs-intro">Sélectionnez le parcours qui transformera votre potentiel.</p>
